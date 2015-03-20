@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Flip Boxes</title>
+	<style>
+		.flipper{
+			width:260px;
+			height:220px;
+			margin: 12px;
+			float: left;
+		}
+		/*		Here we target the flipper dive and target all
+		child divs with a class of front.*/
+		.flipper > .front{
+			position: absolute;
+			transform: perspective( 600px ) rotateY( 0deg );
+			background: #fc0; width: 260px; height:220px; border-radius: 7px;
+			/*This makes the back side of element hide during spin*/
+			backface-visibility: hidden; 
+			/*Over half a second this will animate in a linear fashion*/
+			transition: transform .5s linear 0s;
+		}
+		.flipper > .back{
+			/*This is entirely the same except for the 180 degrees*/
+			position: absolute;
+			transform: perspective( 600px ) rotateY( 180deg );
+			background: red; width: 260px; height:220px; border-radius: 7px;
+			/*This makes the back side of element hide during spin*/
+			backface-visibility: hidden; 
+			/*Over half a second this will animate in a linear fashion*/
+			transition: transform .5s linear 0s;
+		}
+		
+		.flipper:hover > .front{
+			transform: perspective( 600px ) rotateY( -180deg );
+		}
+		.flipper:hover > .back{
+			transform: perspective( 600px ) rotateY( 0deg );
+		}
+	</style>
+</head>
+<body>
+	<div class="flipper">
+		<div class="back">Box 1 Back Side</div>
+		<div class="front">Box 1 Front Side</div>
+	</div>
+	<div class="flipper">
+		<div class="back">Box 1 Back Side</div>
+		<div class="front">Box 1 Front Side</div>
+	</div>
+	<div class="flipper">
+		<div class="back">Box 1 Back Side</div>
+		<div class="front">Box 1 Front Side</div>
+	</div>
+</body>
+</html>
